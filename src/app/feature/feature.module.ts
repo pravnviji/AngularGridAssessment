@@ -4,29 +4,32 @@ import { CommonModule } from '@angular/common';
 import { FeatureRoutingModule } from './feature-routing.module';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 import { TariffComponent } from './components/tariff/tariff.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
-
+const MathModules = [
+  MatTableModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
+];
 @NgModule({
-  declarations: [
-    TariffComponent
-  ],
+  declarations: [TariffComponent],
   imports: [
     CommonModule,
     FeatureRoutingModule,
-    MatTableModule,
-    MatButtonModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ...MathModules
   ],
-  exports: [TariffComponent]
+  exports: [TariffComponent],
 })
 export class FeatureModule { }

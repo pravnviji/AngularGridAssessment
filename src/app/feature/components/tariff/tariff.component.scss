@@ -1,35 +1,16 @@
 :host .app-tariff {
   padding: 3%;
-
-  // Generic design
-  &__cmn {
-    &__amt {
-      flex-direction: column;
-      &--btn {
-        margin: 2% 0;
-      }
-    }
+  &__h2 {
+    text-align: center;
   }
-  //'screen and (min-width: 1920px) and (max-width: 5000px)'
-  &__xl {
-    &__other-benefits {
-      display: flex;
-      flex-direction: column;
-      padding: 2% 0%;
-    }
-    &__row {
-      border: 2px solid black;
-      margin: 2% 0%;
-    }
-
-    &__id {
-      border-right: 2px solid black;
-      max-width: 3% !important;
-      height: 150px;
-      margin-right: 2%;
-    }
+  &__input-text {
+    width: 100%;
+    margin-bottom: -10px;
   }
-  //'screen and (min-width: 1280px) and (max-width: 1919px)'
+
+  //'screen and (min-width: 1920px) and (max-width: 5000px)' - XL
+  //'screen and (min-width: 1280px) and (max-width: 1919px)' - LG
+  &__xl,
   &__lg {
     &__other-benefits {
       display: flex;
@@ -46,6 +27,31 @@
       max-width: 3% !important;
       height: 150px;
       margin-right: 2%;
+      padding-right: 2%;
+    }
+    &__download {
+      border: 1px solid black;
+      padding: 0px 20px;
+      margin: 10px 0px;
+      border-radius: 10px;
+      &--icon {
+        padding-right: 20px;
+        border-right: 1px solid black;
+        height: 15px;
+        font-size: 1.2em;
+        margin-top: 4px;
+      }
+      &--text {
+        padding-left: 20px;
+        vertical-align: super;
+        font-size: 0.9em;
+      }
+    }
+    &__amt {
+      flex-direction: column;
+      &--btn {
+        margin: 2% 0;
+      }
     }
   }
 
@@ -60,6 +66,24 @@
       max-width: 6% !important;
       margin-top: -6%;
     }
+    &__download {
+      border: 1px solid black;
+      padding: 0px 20px;
+      margin: 10px 0px;
+      border-radius: 10px;
+      &--icon {
+        padding-right: 20px;
+        border-right: 1px solid black;
+        height: 15px;
+        font-size: 1.2em;
+        margin-top: 4px;
+      }
+      &--text {
+        padding-left: 20px;
+        vertical-align: super;
+        font-size: 0.9em;
+      }
+    }
   }
   // 'screen and (min-width: 600px) and (max-width: 959px)'
   &__sm {
@@ -71,6 +95,26 @@
       height: 150px;
       max-width: 6% !important;
       margin-top: -6%;
+    }
+    &__download {
+      &--icon {
+        font-size: 1.2em;
+      }
+      &--text {
+        margin-left: -5px;
+        vertical-align: super;
+        font-size: 0.8em;
+      }
+    }
+    &__amt {
+      flex-direction: row;
+      font-size: 0.8em;
+      &--btn {
+        height: 86px;
+        width: 20px;
+        margin: 3% 10%;
+        background-color: #ffd740;
+      }
     }
   }
 
@@ -86,5 +130,34 @@
       margin-top: -12%;
       margin-left: -5%;
     }
+    &__download {
+      &--icon {
+        font-size: 1.2em;
+      }
+      &--text {
+        margin-left: -5px;
+        vertical-align: super;
+        font-size: 0.8em;
+      }
+    }
+    &__amt {
+      flex-direction: row;
+      font-size: 0.8em;
+      &--btn {
+        height: 86px;
+        width: 20px;
+        margin: 3% 10%;
+        background-color: #ffd740;
+      }
+    }
   }
+}
+
+::ng-deep mat-row,
+mat-header-row {
+  border: none;
+}
+
+::ng-deep .mat-table {
+  margin-top: -4%;
 }

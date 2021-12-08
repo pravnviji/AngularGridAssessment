@@ -1,44 +1,89 @@
 <div class="app-tariff">
+    <h2 class="app-tariff__h2"> Tariff Plan</h2>
+    <mat-form-field class="app-tariff__input-text">
+        <input matInput (keydown)="applyFilter($event)" placeholder="Global Filter">
+    </mat-form-field>
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="{{displayedColumns[0]}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell fxFlex="20%" fxFlex.lt-md="20%" fxFlex.lt-sm="20%" fxFlex.lt-lg="5%" fxFlex.lt-xl="5%"
+                *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__id'"> {{row.id}} </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="{{displayedColumns[1]}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
 
-<mat-table [dataSource]="this.tariffData" matSort>
-    <ng-container matColumnDef="{{displayedColumns[0]}}"  >
-        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
-        <mat-cell fxFlex="20%" fxFlex.lt-md="20%" fxFlex.lt-sm="20%"  fxFlex.lt-lg="5%" fxFlex.lt-xl="5%" *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__id'"> {{row.id}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="{{displayedColumns[2]}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell *matCellDef="let row" [ngSwitch]="true">
+                <div *ngSwitchCase="this.deviceSz === 'xl' || this.deviceSz === 'lg'">
+                    Download<br>
+                    <div [ngClass]="'app-tariff__'+this.deviceSz+'__download'">
+                        <mat-icon aria-hidden="false" aria-label="downloadicon"
+                            [ngClass]="'app-tariff__'+this.deviceSz+'__download--icon'">arrow_downward</mat-icon>
+                        <span [ngClass]="'app-tariff__'+this.deviceSz+'__download--text'">{{row.download}}
+                            Mbits/s</span>
+                    </div>
+                    Upload<br>
+                    <div [ngClass]="'app-tariff__'+this.deviceSz+'__download'">
+                        <mat-icon aria-hidden="false" aria-label="uploadicon"
+                            [ngClass]="'app-tariff__'+this.deviceSz+'__download--icon'">arrow_upward</mat-icon>
+                        <span [ngClass]="'app-tariff__'+this.deviceSz+'__download--text'">{{row.upload}} Mbits/s</span>
+                    </div>
+                </div>
+                <div *ngSwitchCase="this.deviceSz ==='md'">
+                    <div [ngClass]="'app-tariff__'+this.deviceSz+'__download'">
+                        <mat-icon aria-hidden="false" aria-label="downloadicon"
+                            [ngClass]="'app-tariff__'+this.deviceSz+'__download--icon'">arrow_downward</mat-icon>
+                        <span [ngClass]="'app-tariff__'+this.deviceSz+'__download--text'">{{row.download}}
+                            Mbits/s</span>
+                    </div>
+                    <div [ngClass]="'app-tariff__'+this.deviceSz+'__download'">
+                        <mat-icon aria-hidden="false" aria-label="uploadicon"
+                            [ngClass]="'app-tariff__'+this.deviceSz+'__download--icon'">arrow_upward</mat-icon>
+                        <span [ngClass]="'app-tariff__'+this.deviceSz+'__download--text'">{{row.upload}} Mbits/s</span>
+                    </div>
+                </div>
+                <div *ngSwitchDefault>
+                    <div [ngClass]="'app-tariff__'+this.deviceSz+'__download'">
+                        <mat-icon aria-hidden="false" aria-label="downloadicon"
+                            [ngClass]="'app-tariff__'+this.deviceSz+'__download--icon'">arrow_downward</mat-icon>
+                        <span [ngClass]="'app-tariff__'+this.deviceSz+'__download--text'">{{row.download}}
+                            Mbits/s</span>
+                    </div>
 
-    <ng-container matColumnDef="{{displayedColumns[1]}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="{{displayedColumns[2]}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.download}} - {{row.upload}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="{{displayedColumns[3]}}">
-        <mat-header-cell fxHide.xs
-        fxHide.md fxHide.sm 
-        *matHeaderCellDef mat-sort-header ></mat-header-cell>
-        <mat-cell fxHide.xs 
-        fxHide.md fxHide.sm  *matCellDef="let row;" [ngClass]="'app-tariff__'+this.deviceSz+'__other-benefits'">
-            <div *ngFor=" let benefits of row.otherbenefits" >
-             {{benefits}}
-            </div>
+                </div>
             </mat-cell>
-      </ng-container>
+        </ng-container>
 
-      <ng-container matColumnDef="{{displayedColumns[4]}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="app-tariff__cmn__amt">€ {{row.amount}} <br><button mat-raised-button color="accent" class="app-tariff__cmn__amt--btn">Tariff ></button>
-        </mat-cell>
-       
-      </ng-container>
+        <ng-container matColumnDef="{{displayedColumns[3]}}">
+            <mat-header-cell fxHide.xs fxHide.md fxHide.sm *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-cell fxHide.xs fxHide.md fxHide.sm *matCellDef="let row;"
+                [ngClass]="'app-tariff__'+this.deviceSz+'__other-benefits'">
+                <div *ngFor=" let benefits of row.otherbenefits">
+                    {{benefits}}
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="{{displayedColumns[4]}}">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+
+            <mat-cell *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__amt'">€ {{row.amount}} <br>
+                <button *ngIf="this.deviceSz === 'xl' || this.deviceSz === 'lg'" mat-raised-button color="accent"
+                    [ngClass]="'app-tariff__'+this.deviceSz+'__amt--btn'">Tariff ></button>
+                <button *ngIf="this.deviceSz === 'xs' || this.deviceSz === 'sm' || this.deviceSz === 'md'"
+                    [ngClass]="'app-tariff__'+this.deviceSz+'__amt--btn'">></button>
+            </mat-cell>
+
+        </ng-container>
 
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="'app-tariff__'+this.deviceSz+'__row'"></mat-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="'app-tariff__'+this.deviceSz+'__row'">
+        </mat-row>
     </mat-table>
 
 </div>
