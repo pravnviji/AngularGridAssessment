@@ -1,0 +1,90 @@
+:host .app-tariff {
+  padding: 3%;
+
+  // Generic design
+  &__cmn {
+    &__amt {
+      flex-direction: column;
+      &--btn {
+        margin: 2% 0;
+      }
+    }
+  }
+  //'screen and (min-width: 1920px) and (max-width: 5000px)'
+  &__xl {
+    &__other-benefits {
+      display: flex;
+      flex-direction: column;
+      padding: 2% 0%;
+    }
+    &__row {
+      border: 2px solid black;
+      margin: 2% 0%;
+    }
+
+    &__id {
+      border-right: 2px solid black;
+      max-width: 3% !important;
+      height: 150px;
+      margin-right: 2%;
+    }
+  }
+  //'screen and (min-width: 1280px) and (max-width: 1919px)'
+  &__lg {
+    &__other-benefits {
+      display: flex;
+      flex-direction: column;
+      padding: 2% 0%;
+    }
+    &__row {
+      border: 2px solid black;
+      margin: 2% 0%;
+    }
+
+    &__id {
+      border-right: 2px solid black;
+      max-width: 3% !important;
+      height: 150px;
+      margin-right: 2%;
+    }
+  }
+
+  //'screen and (min-width: 960px) and (max-width: 1279px)'
+  &__md {
+    &__row {
+      border: 2px solid black;
+      margin: 2% 0%;
+    }
+    &__id {
+      height: 150px;
+      max-width: 6% !important;
+      margin-top: -6%;
+    }
+  }
+  // 'screen and (min-width: 600px) and (max-width: 959px)'
+  &__sm {
+    &__row {
+      border: 2px solid black;
+      margin: 2% 0%;
+    }
+    &__id {
+      height: 150px;
+      max-width: 6% !important;
+      margin-top: -6%;
+    }
+  }
+
+  // 'screen and (max-width: 599px)'
+  &__xs {
+    &__row {
+      border: 2px solid black;
+      margin: 2% 0%;
+    }
+    &__id {
+      height: 120px;
+      max-width: 15% !important;
+      margin-top: -12%;
+      margin-left: -5%;
+    }
+  }
+}

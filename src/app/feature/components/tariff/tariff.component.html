@@ -1,0 +1,44 @@
+<div class="app-tariff">
+
+
+<mat-table [dataSource]="this.tariffData" matSort>
+    <ng-container matColumnDef="{{displayedColumns[0]}}"  >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+        <mat-cell fxFlex="20%" fxFlex.lt-md="20%" fxFlex.lt-sm="20%"  fxFlex.lt-lg="5%" fxFlex.lt-xl="5%" *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__id'"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="{{displayedColumns[1]}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{displayedColumns[2]}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.download}} - {{row.upload}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="{{displayedColumns[3]}}">
+        <mat-header-cell fxHide.xs
+        fxHide.md fxHide.sm 
+        *matHeaderCellDef mat-sort-header ></mat-header-cell>
+        <mat-cell fxHide.xs 
+        fxHide.md fxHide.sm  *matCellDef="let row;" [ngClass]="'app-tariff__'+this.deviceSz+'__other-benefits'">
+            <div *ngFor=" let benefits of row.otherbenefits" >
+             {{benefits}}
+            </div>
+            </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="{{displayedColumns[4]}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="app-tariff__cmn__amt">€ {{row.amount}} <br><button mat-raised-button color="accent" class="app-tariff__cmn__amt--btn">Tariff ></button>
+        </mat-cell>
+       
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="'app-tariff__'+this.deviceSz+'__row'"></mat-row>
+    </mat-table>
+
+</div>

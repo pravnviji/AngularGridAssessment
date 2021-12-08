@@ -2,19 +2,18 @@
   "name": "angular-grid-assessment",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.0.0",
+    "@angular/cdk": "~13.0.0",
     "@angular/common": "~13.0.0",
     "@angular/compiler": "~13.0.0",
     "@angular/core": "~13.0.0",
+    "@angular/flex-layout": "^13.0.0-beta.36",
     "@angular/forms": "~13.0.0",
+    "@angular/material": "~13.0.0",
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
@@ -28,6 +27,7 @@
     "@angular/compiler-cli": "~13.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "angular-in-memory-web-api": "^0.13.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
