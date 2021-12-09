@@ -22,7 +22,7 @@
       "es2020",
       "dom"
     ],
-    "types": ["node"],
+    "types": ["mocha","node","jasmine"],
     "resolveJsonModule": true
   },
   "angularCompilerOptions": {

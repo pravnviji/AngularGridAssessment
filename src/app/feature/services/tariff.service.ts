@@ -3,10 +3,12 @@ import { map, Observable } from 'rxjs';
 import { HttpRequestService } from 'src/app/core/http/http-request.service';
 import { Logger } from 'src/app/core/logger.service';
 import { TtariffDetails } from './tariff-details';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TariffService {
 
   constructor(private http: HttpRequestService, private logger: Logger) { }

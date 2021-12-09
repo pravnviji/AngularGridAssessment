@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@mixin base_id($br: 0px, $wd, $hg, $mt, $mr, $ml, $pr) {
+  border-right: $br solid black;
+  max-width: $wd !important;
+  height: $hg;
+  margin-top: $mt;
+  margin-right: $mr;
+  margin-left: $ml;
+  padding-right: $pr;
+}
+
+@mixin base_button($wd, $hg, $mg) {
+  width: $wd;
+  height: $hg;
+  margin: $mg;
+  background-color: #ffd740;
+}

@@ -1,20 +1,27 @@
 <div class="app-tariff">
     <h2 class="app-tariff__h2"> Tariff Plan</h2>
+
+    <!-- Global Filter -->
     <mat-form-field class="app-tariff__input-text">
         <input matInput (keydown)="applyFilter($event)" placeholder="Global Filter">
     </mat-form-field>
+
     <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID -->
         <ng-container matColumnDef="{{displayedColumns[0]}}">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell fxFlex="20%" fxFlex.lt-md="20%" fxFlex.lt-sm="20%" fxFlex.lt-lg="5%" fxFlex.lt-xl="5%"
                 *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__id'"> {{row.id}} </mat-cell>
         </ng-container>
 
+         <!-- Name -->
         <ng-container matColumnDef="{{displayedColumns[1]}}">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
         </ng-container>
 
+         <!-- Download -->
         <ng-container matColumnDef="{{displayedColumns[2]}}">
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell *matCellDef="let row" [ngSwitch]="true">
@@ -58,6 +65,7 @@
             </mat-cell>
         </ng-container>
 
+        <!-- Other Benefits -->
         <ng-container matColumnDef="{{displayedColumns[3]}}">
             <mat-header-cell fxHide.xs fxHide.md fxHide.sm *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell fxHide.xs fxHide.md fxHide.sm *matCellDef="let row;"
@@ -68,13 +76,14 @@
             </mat-cell>
         </ng-container>
 
+        <!-- Amount -->
         <ng-container matColumnDef="{{displayedColumns[4]}}">
             <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
 
             <mat-cell *matCellDef="let row" [ngClass]="'app-tariff__'+this.deviceSz+'__amt'">€ {{row.amount}} <br>
-                <button *ngIf="this.deviceSz === 'xl' || this.deviceSz === 'lg'" mat-raised-button color="accent"
+                <button *ngIf="this.deviceSz === 'xl' || this.deviceSz === 'lg' || this.deviceSz === 'md'" mat-raised-button color="accent"
                     [ngClass]="'app-tariff__'+this.deviceSz+'__amt--btn'">Tariff ></button>
-                <button *ngIf="this.deviceSz === 'xs' || this.deviceSz === 'sm' || this.deviceSz === 'md'"
+                <button *ngIf="this.deviceSz === 'xs' || this.deviceSz === 'sm'"
                     [ngClass]="'app-tariff__'+this.deviceSz+'__amt--btn'">></button>
             </mat-cell>
 
