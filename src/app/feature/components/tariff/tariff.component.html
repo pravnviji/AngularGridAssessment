@@ -70,9 +70,9 @@
             <mat-header-cell fxHide.xs fxHide.md fxHide.sm *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell fxHide.xs fxHide.md fxHide.sm *matCellDef="let row;"
                 [ngClass]="'app-tariff__'+this.deviceSz+'__other-benefits'">
-                <div *ngFor=" let benefits of row.otherbenefits">
-                    {{benefits}}
-                </div>
+                <ul [ngClass]="'app-tariff__'+this.deviceSz+'__other-benefits--ul'" *ngFor=" let benefits of row.otherbenefits">
+                    <li>{{benefits}}</li>
+                </ul>
             </mat-cell>
         </ng-container>
 

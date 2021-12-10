@@ -5,7 +5,7 @@ import {
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Logger } from 'src/app/core/logger.service';
-import { TtariffDetails } from './tariff-details';
+import { TtariffDetails } from '../model/tariff-details';
 
 import { TariffService } from './tariff.service';
 

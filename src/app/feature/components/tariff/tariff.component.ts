@@ -4,7 +4,7 @@ import { MediaObserver } from '@angular/flex-layout';
 import { MatTableDataSource } from '@angular/material/table';
 import { Logger } from 'src/app/core/logger.service';
 
-import { TtariffDetailCols, TtariffDetails } from '../../services/tariff-details';
+import { TtariffDetailCols, TtariffDetails } from '../../model/tariff-details';
 import { TariffService } from '../../services/tariff.service';
 
 

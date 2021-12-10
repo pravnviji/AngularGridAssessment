@@ -101,10 +101,13 @@ describe('TariffComponent', () => {
   it('applyFilter :: Should update the datasource', () => {
     const mockEvent = {
       target: {
-        value: 'test',
+        value: 'Montana bonus 12',
       },
     };
     component.applyFilter(mockEvent);
+    console.log("ApplyFilter");
+    console.log(component.dataSource.filter);
+    console.log(mockEvent.target.value);
     expect(component.dataSource.filter).toEqual(mockEvent.target.value);
   });
 });
