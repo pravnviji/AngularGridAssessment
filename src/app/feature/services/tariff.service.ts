@@ -20,9 +20,11 @@ export class TariffService {
       .get(this.tariffUrl)
       .pipe(map((result) => this.mapTariffDetails(result as TtariffDetails[])));
   }
+
   mapTariffDetails(result: TtariffDetails[]): TtariffDetails[] {
     this.logger.debug('mapTariffDetails');
     this.logger.debug('result', result);
     return result;
   }
+
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Logger } from '../../core/logger.service';
 
@@ -12,7 +12,7 @@ export class HttpRequestService {
 
   constructor(private http: HttpClient, private logger: Logger) {
     this.logger.debug(`HttpRequestService`, environment.serverUrl);
-   }
+  }
 
   /**
    * Gets http request service
@@ -25,7 +25,13 @@ export class HttpRequestService {
     this.logger.debug(`HttpRequestService`, environment.serverUrl + path);
     header = header ?? this.header;
     const url = environment.serverUrl + path;
-    return this.http.get(url, header);
+    return this.http.get(url, header).pipe(
+      retry(3), catchError((err) => this.handleError(err, `GET`, url)));
+  }
+
+  handleError(error: any, method: string, url: string) {
+    this.logger.debug(`:: Exception in ${method} ==> ${url}`, `Error =>`, error);
+    return throwError(() => error);
   }
 
   /**
@@ -41,7 +47,8 @@ export class HttpRequestService {
     this.logger.debug(`HttpRequestService`, environment.serverUrl + path);
     header = header ?? this.header;
     const url = environment.serverUrl + path;
-    return this.http.post(url, body, header);
+    return this.http.post(url, body, header).pipe(
+      retry(3), catchError((err) => this.handleError(err, `POST`, url)));
   }
 
   /**
@@ -54,7 +61,8 @@ export class HttpRequestService {
   public put(path: string, body?: object, header?: object): Observable<Object> {
     header = header ?? this.header;
     const url = environment.serverUrl + path;
-    return this.http.put(url, body, header);
+    return this.http.put(url, body, header).pipe(
+      retry(3), catchError((err) => this.handleError(err, `PUT`, url)));
   }
 
   /**
@@ -70,6 +78,7 @@ export class HttpRequestService {
       body: requestBody,
     };
     const url = environment.serverUrl + path;
-    return this.http.request('delete', url, options);
+    return this.http.request('delete', url, options).pipe(
+      retry(3), catchError((err) => this.handleError(err, `DELETE`, url)));
   }
 }
